@@ -1,0 +1,27 @@
+openapi: 3.0.1
+info:
+  title: API de Consultoras
+  version: "1.0"
+servers:
+  - url: https://oo9g5hp6y7.execute-api.us-east-1.amazonaws.com/dev
+paths:
+  /consultoras/{codpais}:
+    get:
+      summary: Obtiene información de consultoras
+      operationId: getConsultans
+      parameters:
+        - name: codpais
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rows
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Operación exitosa
+        '400':
+          description: Petición inválida

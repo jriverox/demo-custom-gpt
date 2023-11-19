@@ -1,0 +1,25 @@
+service: consultoras-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  profile: belcorp-arch
+  stage: dev
+  # apiGateway:
+  #   restApiId: RestApiId # Opcional: ID de un API Gateway existente
+  #   restApiRootResourceId: RootResourceId # Opcional: ID del recurso raíz
+
+functions:
+  GetConsultans:
+    handler: src/handler.getConsultoras
+    events:
+      - http:
+          path: consultoras/{codpais}
+          method: get
+          request:
+            parameters:
+              paths:
+                codpais: true
+              querystrings:
+                rows: true
